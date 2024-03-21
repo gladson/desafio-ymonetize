@@ -1,0 +1,17 @@
+version: "3.1"
+
+services:
+  php:
+    container_name: php
+    hostname: php
+    image: desafio-php-ymonetize
+    build:
+      context: .
+    working_dir: /app
+    env_file:
+      - ${ENV}
+    ports:
+      - "${PHP_PORTS:-4566-4583}:${PHP_PORTS:-4566-4583}"
+    volumes:
+      - .:/app
+      - "/var/run/docker.sock:/var/run/docker.sock"
